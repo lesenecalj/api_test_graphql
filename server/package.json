@@ -1,0 +1,25 @@
+{
+  "name": "api_test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "apollo-server": "^2.8.0",
+    "apollo-server-express": "^2.8.0",
+    "dayjs": "^1.8.15",
+    "express": "^4.17.1",
+    "graphql": "^14.4.2",
+    "graphql-iso-date": "^3.6.1",
+    "graphql-subscriptions": "^1.1.0",
+    "http": "0.0.0",
+    "prompts": "^2.1.0",
+    "subscriptions-transport-ws": "^0.9.16"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

@@ -1,0 +1,21 @@
+{
+  "name": "api_test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "apollo-boost": "^0.4.3",
+    "apollo-datasource-rest": "^0.6.1",
+    "apollo-server": "^2.8.0",
+    "apollo-server-express": "^2.8.0",
+    "graphql": "^14.4.2",
+    "graphql-tag": "^2.10.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
