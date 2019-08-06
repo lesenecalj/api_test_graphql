@@ -26,7 +26,6 @@ module.exports = {
     },
 
     getForumByID(obj, {forumID}) {
-      console.log(ForumAPI.getForumByID(forumID));
       return ForumAPI.getForumByID(forumID);
     },
 
@@ -37,9 +36,9 @@ module.exports = {
       return ForumAPI.getAccessibleforums();
     },
     
-    isUserJoinedForum(obj, {userID, forumID}) {
-      return UserAPI.isUserJoinedForum(userID, forumID);
-    },
+    // isUserJoinedForum(obj, {userID, forumID}) {
+    //   return UserAPI.isUserJoinedForum(userID, forumID);
+    // },
 
     getUsers: () => UserAPI.getUsers(),
 

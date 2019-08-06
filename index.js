@@ -16,8 +16,8 @@ new Promise(function(resolve, reject) {
 }).then(() => {
   (initApp = async () => {
     const users = await UserAPI.getUsers();
-    await scenario1(users[0], users);
-    //await scenario2(users[1]);
+    // await scenario1(users[0], users);
+    await scenario2(users[1]);
     //await scenario3(users);
   })();
 });

@@ -40,7 +40,7 @@ const typeDefs = gql`
     getForumsByUserID(userID: Int): [Forum],
     getAccessibleforums: [Forum],
 
-    isUserJoinedForum(userID: Int, forumID: Int) : Boolean,
+    # isUserJoinedForum(userID: Int, forumID: Int) : Boolean,
     getUsers: [User],
 
     getMessagesByForumID(forumID: Int) : [Message],
