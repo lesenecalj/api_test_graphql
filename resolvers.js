@@ -25,7 +25,8 @@ module.exports = {
       return ForumAPI.getForums();
     },
 
-    getForumByID({forumID}) {
+    getForumByID(obj, {forumID}) {
+      console.log(ForumAPI.getForumByID(forumID));
       return ForumAPI.getForumByID(forumID);
     },
 

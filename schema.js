@@ -36,7 +36,7 @@ const typeDefs = gql`
 
   type Query {
     getForums: [Forum],
-    getForumByID(ForumID: Int) : Forum,
+    getForumByID(forumID: Int) : Forum,
     getForumsByUserID(userID: Int): [Forum],
     getAccessibleforums: [Forum],
 
