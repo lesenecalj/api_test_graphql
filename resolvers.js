@@ -43,7 +43,9 @@ module.exports = {
 
     getUsers: () => UserAPI.getUsers(),
 
-    getMessagesByForumID: () => MessageAPI.getMessagesByForumID(forumID),
+    getMessagesByForumID(obj, {forumID}) {
+      return MessageAPI.getMessagesByForumID(forumID);
+    } 
   },
   Mutation: {
     addForum(obj, {userID, title, isPrivate}) {
