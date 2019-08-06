@@ -1,7 +1,4 @@
 const {users} = require('./../mock/users.json');
-
-const ForumAPI = require('./ForumAPI');
-
 /**
  * @class
  * @name UserAPI 
@@ -25,8 +22,7 @@ class UserAPI {
    * @param {Int} userID 
    * @param {Int} forumID 
    */
-  async isUserJoinedForum(userID, forumID) {
-    const userForums = await ForumAPI.getForumsByUserID(userID);
+  async isUserJoinedForum(userForums, forumID) {
     return (userForums.find(forum => forum.id === forumID) ? true :  false);
   }
 

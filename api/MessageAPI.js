@@ -1,5 +1,4 @@
 const {messages} = require('./../mock/messages.json');
-const ForumAPI = require('./ForumAPI');
 
 const dayjs = require('dayjs');
 

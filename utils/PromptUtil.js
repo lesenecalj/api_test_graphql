@@ -8,11 +8,10 @@ class PromptUtils {
 
   async assignUserToForum(user, accessibleForums) {
     return await (async () => {
-      let sms = "";
       const result = await prompts({
         type: 'number',
         name: 'value',
-        message: 'Quel Forum (forumID) voulez vous rejoindre ?',
+        message: 'Quel Forum (forumID) voulez vous rejoindre ? (la valeur "2" vous permettra d\'avancer dans le script)',
         validate: async value => {
           const ids = await accessibleForums.map(accessibleForum => accessibleForum.id);
           try {
@@ -29,14 +28,12 @@ class PromptUtils {
   }
 
   async checkValidityInputs (ids, user, input) {
-    let sms = "";
     if (ids.includes(input)) {
       //#He can also join a forum if he knows the forum id
       await ForumAPI.joinForum(user.id, input)
       .then((joinedForum) => {
         if(joinedForum) {
-          sms = `L'utilisateur (${user.name}) a rejoint le forumID ${input}`;
-          console.log(sms);
+          console.log(`L'utilisateur (${user.name}) a rejoint le forumID ${input}`);
         }
       });
     } else {

@@ -11,18 +11,6 @@ class ForumAPI {
   constructor() {
   }
 
-  /**
-   * @function
-   * @name getForums
-   * @description récupérer l'ensemble des forums
-   */
-  getForums() {
-    return forums;
-  }
-
-  getForumByID(forumID) {
-    return forums.find(forum => forum.id === forumID);
-  }
 
   /**
    * @function
@@ -38,6 +26,19 @@ class ForumAPI {
         }
       } 
     })
+  }
+
+  /**
+   * @function
+   * @name getForums
+   * @description récupérer l'ensemble des forums
+   */
+  getForums() {
+    return forums;
+  }
+
+  getForumByID(forumID) {
+    return forums.find(forum => forum.id === forumID);
   }
 
   /**

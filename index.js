@@ -16,8 +16,8 @@ new Promise(function(resolve, reject) {
 }).then(() => {
   (initApp = async () => {
     const users = await UserAPI.getUsers();
-    await scenario1(users[0], users);
-    //await scenario2(users[1]);
+    //await scenario1(users[0], users);
+    await scenario2(users[1]);
     //await scenario3(users);
   })();
 });
@@ -35,20 +35,16 @@ scenario1 = async (user, users) => {
   const accessibleForums = await ForumAPI.getAccessibleforums();
   console.log('Liste des forums disponibles :' , accessibleForums);
   
-  try {
-    const {value} = await PromptUtil.assignUserToForum(user, accessibleForums);
-    // #see the list of previous messages, ordered by most recent. 
-    // #To be displayed in our client, a message should at least have a text, a sending time and name/picture of the sender
-    if(parseInt(value)) {
-      const sortedMessages = MessageAPI.getMessagesByForumID(value);
-      // #see the name and picture of the members of the forum
-      if(sortedMessages) {
-        console.log("voici les derniers messages envoyés du plus récent au plus vieux: ");
-        console.log(MessageHelper.getFormattedMessages(users, sortedMessages));
-      }
+  const {value} = await PromptUtil.assignUserToForum(user, accessibleForums);
+  // #see the list of previous messages, ordered by most recent. 
+  // #To be displayed in our client, a message should at least have a text, a sending time and name/picture of the sender
+  if(parseInt(value)) {
+    const sortedMessages = MessageAPI.getMessagesByForumID(value);
+    // #see the name and picture of the members of the forum
+    if(sortedMessages) {
+      console.log("voici les derniers messages envoyés du plus récent au plus vieux: ");
+      console.log(MessageHelper.getFormattedMessages(users, sortedMessages));
     }
-  } catch(error) {
-    console.log(error);
   }
 }
 
@@ -57,7 +53,9 @@ scenario2 = async (user) => {
   const forumAdded = await ForumAPI.addForum(user.id, 'sujets', false);
   console.log(`Le forum a été créé avec succès (#${forumAdded.id})`);
 
-  const isUserJoinedForum = await UserAPI.isUserJoinedForum(user.id, forumAdded.id);
+  const userForums = await ForumAPI.getForumsByUserID(user.id);
+
+  const isUserJoinedForum = await UserAPI.isUserJoinedForum(userForums, forumAdded.id);
   // #Once inside a forum, he can
   if(isUserJoinedForum) {
     console.log('L\'utilisateur a bien rejoint le forum automatiquement');
@@ -73,7 +71,7 @@ scenario2 = async (user) => {
     }
 
   }
-  
+  console.log(MessageAPI.getMessagesByForumID(forumAdded.id));
 }
 
 scenario3 = async (users) => {
