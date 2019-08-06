@@ -25,8 +25,8 @@ class UserAPI {
    * @param {Int} userID 
    * @param {Int} forumID 
    */
-  isUserJoinedForum(userID, forumID) {
-    const userForums = ForumAPI.getForumsByUserID(userID);
+  async isUserJoinedForum(userID, forumID) {
+    const userForums = await ForumAPI.getForumsByUserID(userID);
     return (userForums.find(forum => forum.id === forumID) ? true :  false);
   }
 

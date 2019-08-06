@@ -8,14 +8,20 @@ const MessageHelper = require('./helper/MessageHelper');
 
 const PromptUtil = require('./utils/PromptUtil');
 
-require('./server');
 
-(initApp = async () => {
-  const users = await UserAPI.getUsers();
-  // await scenario1(users[0], users);
-  // await scenario2(users[1]);
-  await scenario3(users);
-})();
+
+new Promise(function(resolve, reject) {
+  require('./server');
+  resolve();
+}).then(() => {
+  (initApp = async () => {
+    const users = await UserAPI.getUsers();
+    await scenario1(users[0], users);
+    //await scenario2(users[1]);
+    //await scenario3(users);
+  })();
+});
+
 
 scenario1 = async (user, users) => {
 
@@ -29,16 +35,20 @@ scenario1 = async (user, users) => {
   const accessibleForums = await ForumAPI.getAccessibleforums();
   console.log('Liste des forums disponibles :' , accessibleForums);
   
-  const {value} = await PromptUtil.assignUserToForum(user, accessibleForums);
-  // #see the list of previous messages, ordered by most recent. 
-  // #To be displayed in our client, a message should at least have a text, a sending time and name/picture of the sender
-  if(parseInt(value)) {
-    const sortedMessages = MessageAPI.getMessagesByForumID(value);
-    // #see the name and picture of the members of the forum
-    if(sortedMessages) {
-      console.log("voici les derniers messages envoyés du plus récent au plus vieux: ");
-      console.log(MessageHelper.getFormattedMessages(users, sortedMessages));
+  try {
+    const {value} = await PromptUtil.assignUserToForum(user, accessibleForums);
+    // #see the list of previous messages, ordered by most recent. 
+    // #To be displayed in our client, a message should at least have a text, a sending time and name/picture of the sender
+    if(parseInt(value)) {
+      const sortedMessages = MessageAPI.getMessagesByForumID(value);
+      // #see the name and picture of the members of the forum
+      if(sortedMessages) {
+        console.log("voici les derniers messages envoyés du plus récent au plus vieux: ");
+        console.log(MessageHelper.getFormattedMessages(users, sortedMessages));
+      }
     }
+  } catch(error) {
+    console.log(error);
   }
 }
 

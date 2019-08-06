@@ -8,8 +8,10 @@
     "apollo-datasource-rest": "^0.6.1",
     "apollo-server": "^2.8.0",
     "apollo-server-express": "^2.8.0",
+    "dayjs": "^1.8.15",
     "graphql": "^14.4.2",
-    "graphql-tag": "^2.10.1"
+    "graphql-tag": "^2.10.1",
+    "prompts": "^2.2.1"
   },
   "devDependencies": {},
   "scripts": {

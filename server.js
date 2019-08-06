@@ -8,7 +8,7 @@ const server = new ApolloServer({
   resolvers
 });
 
-server.listen().then(({ url }) =>  {
+server.listen().then(async({ url }) =>  {
   console.log(`🚀 Server ready at http://localhost:4000${server.graphqlPath}`)
   console.log(`🚀 Subscriptions ready at ws://localhost:$4000${server.subscriptionsPath}`)
 });

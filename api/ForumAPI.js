@@ -94,7 +94,6 @@ class ForumAPI {
    * @param {Int} forumID
    */
   async joinForum(userID, forumID, isAsked) {
-    console.log('joinForum', isAsked);
     const foundForum = await forums.find(forum => forum.id === forumID);
     if(isAsked === undefined || !isAsked) {
       const foundForum = await forums.find(forum => forum.id === forumID);
